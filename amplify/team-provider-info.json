@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-leeblog-dev-132000-authRole",
+      "UnauthRoleArn": "arn:aws:iam::342389502386:role/amplify-leeblog-dev-132000-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::342389502386:role/amplify-leeblog-dev-132000-authRole",
+      "Region": "ap-northeast-2",
+      "DeploymentBucketName": "amplify-leeblog-dev-132000-deployment",
+      "UnauthRoleName": "amplify-leeblog-dev-132000-unauthRole",
+      "StackName": "amplify-leeblog-dev-132000",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:342389502386:stack/amplify-leeblog-dev-132000/d5970290-abc6-11eb-81fb-0aa73c97694a",
+      "AmplifyAppId": "d462cv55e6lt"
+    },
+    "categories": {
+      "auth": {
+        "leeblogffe69647": {}
+      }
+    }
+  }
+}

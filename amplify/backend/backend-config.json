@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "leeblogffe69647": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
