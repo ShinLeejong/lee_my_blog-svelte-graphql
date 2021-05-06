@@ -1,17 +1,28 @@
 <script>
 	export let segment;
+	import about from '../routes/_layout.svelte';
 </script>
 
 <style>
 	nav {
-		border-bottom: 1px solid rgba(255,62,0,0.1);
-		font-weight: 300;
+		border-bottom: 1px solid rgba(255, 62, 0, 0.1);
+		font-weight: 600;
 		padding: 0 1em;
 	}
 
 	ul {
+		position: relative;
 		margin: 0;
 		padding: 0;
+		list-style: none;
+	}
+
+	ul > li {
+		padding: 0 0.5rem;
+	}
+
+	li {
+		float: left;
 	}
 
 	/* clearfix */
@@ -19,11 +30,6 @@
 		content: '';
 		display: block;
 		clear: both;
-	}
-
-	li {
-		display: block;
-		float: left;
 	}
 
 	[aria-current] {
@@ -46,6 +52,7 @@
 		padding: 1em 0.5em;
 		display: block;
 	}
+	
 </style>
 
 <nav>
