@@ -4,18 +4,20 @@
 
 	export let segment;
 
-	onMount(() => { // Promise를 사용하고 싶은 부분
-		const header = document.querySelector("header");
-		const main_background_image_height = document.querySelector("#main_background_image").height;
+	onMount(() => {
 		const body = document.body;
     	const html = document.documentElement;
 		const browser_height = Math.max( body.scrollHeight, body.offsetHeight, 
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
+		const regexp = /[^\/(?!\d)]$/g;
 		let current_scroll = window.pageYOffset || document.documentElement.scrollTop;
 		let isMoving = false;
 
 		window.addEventListener('scroll', () => {
+			if(window.location.href.match(regexp)) return;
 			let scrollY = window.pageYOffset || document.documentElement.scrollTop;
+			const header = document.querySelector("header");
+			const main_background_image_height = document.querySelector("#main_background_image").height;
 
 			if(scrollY > current_scroll && !isMoving) {
 				isMoving = true;
@@ -51,7 +53,7 @@
 		left: 0;
 		width: 100%;
 		opacity: 0.6;
-		background: #f5b335;
+		background: #ffd587;
 		transition: opacity 0.2s ease-in-out;
 		line-height: 100%;
 	}
@@ -66,7 +68,7 @@
 	}
 
 	.show_header {
-		opacity: 1;
+		opacity: 0.8;
 	}
 
 </style>
