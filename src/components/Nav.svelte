@@ -1,6 +1,22 @@
 <script>
+	import { onMount } from 'svelte';
 	export let segment;
-	import about from '../routes/_layout.svelte';
+
+	let onClick;
+	let isDarkMode;
+	let user;
+
+	onMount(() => {
+		// Darkmode
+		isDarkMode = localStorage.getItem('isDarkMode') || false;
+		if (isDarkMode === "true") window.document.body.classList.add('dark-mode');
+		onClick = () => {
+        	window.document.body.classList.toggle('dark-mode');
+			isDarkMode = window.document.body.classList.contains('dark-mode') ? true : false;
+			localStorage.setItem('isDarkMode', isDarkMode);
+    	}
+	});
+
 </script>
 
 <style>
@@ -42,7 +58,7 @@
 		content: '';
 		width: calc(100% - 1em);
 		height: 2px;
-		background-color: rgb(255,62,0);
+		background-color: rgb(248, 117, 73);
 		display: block;
 		bottom: -1px;
 	}
@@ -51,17 +67,61 @@
 		text-decoration: none;
 		padding: 1em 0.5em;
 		display: block;
+    	transition: color 0.5s;
+	}
+
+	button {
+		z-index: 800;
+		position: fixed;
+		right: 0;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		background-color: black;
+		color: white;
+		border: none;
+		border-radius: 6px;
+		padding: 0.5rem;
+		margin: 0.5rem;
+		transition: background-color 0.5s;
+	}
+
+	nav > span > p {
+		position: fixed;
+		right: 8rem;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+
+	:global(body.dark-mode) {
+		background-color: #1f2023;
+		color: #ddd;
+	}
+
+	:global(body.dark-mode) button {
+		background-color: white;
+		color: black;
 	}
 	
+	:global(body.dark-mode) nav > span > ul > li {
+		color: white;
+	}
+
 </style>
 
 <nav>
-	<ul>
-		<li><a aria-current="{segment === undefined ? 'page' : undefined}" href=".">home</a></li>
-		<li><a aria-current="{segment === 'about' ? 'page' : undefined}" href="about">about</a></li>
+	<span>
+		<p>Welcome, {user === undefined ? 'Guest' : user}!</p>
+		<button on:click={onClick}>Dark Mode</button>
+		<ul>
+			<li><a aria-current="{segment === undefined ? 'page' : undefined}" href=".">home</a></li>
+			<li><a aria-current="{segment === 'about' ? 'page' : undefined}" href="about">about</a></li>
 
-		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
-		     the blog data when we hover over the link or tap it on a touchscreen -->
-		<li><a rel=prefetch aria-current="{segment === 'blog' ? 'page' : undefined}" href="blog">blog</a></li>
-	</ul>
+			<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
+				the blog data when we hover over the link or tap it on a touchscreen -->
+			<li><a rel=prefetch aria-current="{segment === 'blog' ? 'page' : undefined}" href="blog">blog</a></li>
+			<li><a rel=prefetch aria-current="{segment === 'diary' ? 'page' : undefined}" href="diary">diary</a></li>
+		</ul>
+	</span>
 </nav>

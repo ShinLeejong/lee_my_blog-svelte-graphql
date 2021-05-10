@@ -53,18 +53,18 @@
 		left: 0;
 		width: 100%;
 		opacity: 0.6;
-		background: #ffd587;
+		background: hotpink;
 		transition: opacity 0.2s ease-in-out;
 		line-height: 100%;
 	}
 
 	main {
 		position: relative;
-		width: 100%;
+		width: 100vw;
 		height: 100%;
-		background-color: white;
 		margin: 0;
 		box-sizing: border-box;
+		transition: background-color 1s ease-in-out;
 	}
 
 	.show_header {
