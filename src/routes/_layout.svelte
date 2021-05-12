@@ -95,9 +95,9 @@
 	#top-btn {
 		position: fixed;
 		right: 2vw;
-		bottom: 4vh;
+		bottom: 2vw;
 		width: 2vw;
-		height: 4vh;
+		height: 2vw;
 		display: flex;
 		justify-content: center;
 		align-items: center;

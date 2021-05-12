@@ -13,7 +13,8 @@
 		// Detect whether the browser is from desktop, and if it is, fill in the nav_p_tag
 		if(isDesktop) {
 			const nav_p_tag = document.querySelector("#nav_p");
-			nav_p_tag.innerHTML = "Welcome!";
+			const currentUser = user || "Guest";
+			nav_p_tag.innerHTML = "Welcome, " + currentUser + "!";
 		}
 
 		// Darkmode
