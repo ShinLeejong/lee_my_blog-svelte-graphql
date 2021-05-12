@@ -8,8 +8,13 @@
 	let user;
 
 	onMount(() => {
-		const body = document.body;
-    	const html = document.documentElement;
+		const isDesktop = navigator.userAgent.match(/[^(iPad)|(iPhone)|(iPod)|(android)|(webOS)]/i);
+
+		// Detect whether the browser is from desktop, and if it is, fill in the nav_p_tag
+		if(isDesktop) {
+			const nav_p_tag = document.querySelector("#nav_p");
+			nav_p_tag.innerHTML = "Welcome!";
+		}
 
 		// Darkmode
 		isDarkMode = localStorage.getItem('isDarkMode') || false;
@@ -19,6 +24,8 @@
 			isDarkMode = window.document.body.classList.contains('dark-mode') ? true : false;
 			localStorage.setItem('isDarkMode', isDarkMode);
     	}
+
+		// Initialize the status of header and back_to_top_btn to very first state
 		onNavClick = () => {
 			const header = document.querySelector("header");
 			const back_to_top_btn = document.querySelector("#top-btn");
@@ -122,7 +129,7 @@
 
 <nav>
 	<span>
-		<p>Welcome, {user === undefined ? 'Guest' : user}!</p>
+		<p id="nav_p"></p>
 		<button on:click={onDarkmodeClick}>Dark Mode</button>
 		<ul>
 			<li><a aria-current="{segment === undefined ? 'page' : undefined}" href="." on:click="{onNavClick}">home</a></li>

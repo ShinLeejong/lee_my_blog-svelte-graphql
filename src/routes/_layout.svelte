@@ -102,7 +102,6 @@
 		justify-content: center;
 		align-items: center;
 		z-index: 5000;
-		background-color: #c6f1a9;
 		border: 1px solid #b4c568;
 		animation: fadeIn 1s;
 		-moz-animation: fadeIn 1s; /* Firefox */
@@ -145,7 +144,6 @@
 	}
 
 	#top-btn:hover {
-		background-color: #aace92;
 		border: 1px solid #585891;
 	}
 
