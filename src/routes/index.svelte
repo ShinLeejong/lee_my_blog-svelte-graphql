@@ -31,13 +31,13 @@
 
 <style>
 
-	h1, h2, figure, p {
+	h1, h2, h3, h4, figure, p {
     	transition: color 0.5s;
 		text-align: center;
 		margin: 0 auto;
 	}
 
-	h1, h2 {
+	h1, h2, h3, h4 {
 		font-size: 1rem;
 		text-transform: uppercase;
 		font-weight: 700;
@@ -91,7 +91,7 @@
 		text-transform: uppercase;
 		position: absolute;
 		top: 20vh;
-		left: 10%;
+		left: 10vw;
 		color: white;
 		display: inline-block;
 		animation: fadeIn 2s;
@@ -99,6 +99,33 @@
 		-webkit-animation: fadeIn 2s; /* Safari and Chrome */
 		-o-animation: fadeIn 2s; /* Opera */
 		animation-fill-mode: forwards;
+	}
+
+	.wrapper > #dashboard > h3, h4 {
+		text-transform: uppercase;
+		position: absolute;
+		color: rgb(250, 124, 145);
+		display: inline-block;
+		animation: slideIn 2s;
+		animation-fill-mode: forwards;
+	}
+
+	.wrapper > #dashboard > h3 {
+		top: 30vh;
+	}
+
+	.wrapper > #dashboard > h4 {
+		top: 32vh;
+		animation-delay: 1s;
+	}
+
+	@keyframes slideIn {
+		from {
+			left: -40vw;
+		}
+		to {
+			left: 12vw;
+		}
 	}
 
 	@keyframes fadeIn {
@@ -146,6 +173,8 @@
 	<div id="dashboard">
 		<img id="main_background_image" class="img_appear" src={background_image} alt="main background of Lee's blog"/>
 		<h1>Welcome to my blog.</h1>
+		<h3>Frontend Developer</h3>
+		<h3>Leejong Shin</h3>
 	</div>
 	<div class="contents" name="contents">
 		<h2>Great success!</h2>

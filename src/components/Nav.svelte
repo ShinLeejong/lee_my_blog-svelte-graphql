@@ -2,19 +2,29 @@
 	import { onMount } from 'svelte';
 	export let segment;
 
-	let onClick;
+	let onDarkmodeClick;
+	let onNavClick;
 	let isDarkMode;
 	let user;
 
 	onMount(() => {
+		const body = document.body;
+    	const html = document.documentElement;
+
 		// Darkmode
 		isDarkMode = localStorage.getItem('isDarkMode') || false;
 		if (isDarkMode === "true") window.document.body.classList.add('dark-mode');
-		onClick = () => {
+		onDarkmodeClick = () => {
         	window.document.body.classList.toggle('dark-mode');
 			isDarkMode = window.document.body.classList.contains('dark-mode') ? true : false;
 			localStorage.setItem('isDarkMode', isDarkMode);
     	}
+		onNavClick = () => {
+			const header = document.querySelector("header");
+			const back_to_top_btn = document.querySelector("#top-btn");
+			header.classList.add("show_header");
+			back_to_top_btn.style = "display: none;";	
+		}
 	});
 
 </script>
@@ -113,15 +123,15 @@
 <nav>
 	<span>
 		<p>Welcome, {user === undefined ? 'Guest' : user}!</p>
-		<button on:click={onClick}>Dark Mode</button>
+		<button on:click={onDarkmodeClick}>Dark Mode</button>
 		<ul>
-			<li><a aria-current="{segment === undefined ? 'page' : undefined}" href=".">home</a></li>
-			<li><a aria-current="{segment === 'about' ? 'page' : undefined}" href="about">about</a></li>
+			<li><a aria-current="{segment === undefined ? 'page' : undefined}" href="." on:click="{onNavClick}">home</a></li>
+			<li><a aria-current="{segment === 'about' ? 'page' : undefined}" href="about" on:click="{onNavClick}">about</a></li>
 
 			<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
 				the blog data when we hover over the link or tap it on a touchscreen -->
-			<li><a rel=prefetch aria-current="{segment === 'blog' ? 'page' : undefined}" href="blog">blog</a></li>
-			<li><a rel=prefetch aria-current="{segment === 'diary' ? 'page' : undefined}" href="diary">diary</a></li>
+			<li><a rel=prefetch aria-current="{segment === 'blog' ? 'page' : undefined}" href="blog" on:click="{onNavClick}">blog</a></li>
+			<li><a rel=prefetch aria-current="{segment === 'diary' ? 'page' : undefined}" href="diary" on:click="{onNavClick}">diary</a></li>
 		</ul>
 	</span>
 </nav>
