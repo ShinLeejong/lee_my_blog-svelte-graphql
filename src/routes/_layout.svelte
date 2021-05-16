@@ -14,7 +14,7 @@
 		let current_scroll = window.pageYOffset || document.documentElement.scrollTop;
 		let isMoving = false;
 
-		window.addEventListener('scroll', () => {
+		window.addEventListener('scroll', () => { // debounce needs to be applied
 			let isMain = window.location.href.match(regexp);
 			if(!isMain) return;
 			let scrollY = window.pageYOffset || document.documentElement.scrollTop;
