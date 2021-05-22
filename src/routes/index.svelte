@@ -170,7 +170,7 @@
 </svelte:head>
 
 <div class="wrapper">
-	<div id="dashboard">
+	<div id="dashboard"> <!-- Try SVG Styling -->
 		<img id="main_background_image" class="img_appear" src={background_image} alt="main background of Lee's blog"/>
 		<h1>Welcome to my blog.</h1>
 		<h4>Frontend Developer</h4>

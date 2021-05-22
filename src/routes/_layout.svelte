@@ -18,6 +18,7 @@
 			let isMain = window.location.href.match(regexp);
 			if(!isMain) return;
 			let scrollY = window.pageYOffset || document.documentElement.scrollTop;
+			console.log("scrolled", scrollY);
 			const header = document.querySelector("header");
 			const main_background_image_height = document.querySelector("#main_background_image").height;
 			const back_to_top_btn = document.querySelector("#top-btn");
