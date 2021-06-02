@@ -23,7 +23,6 @@
 		onKeyDown = e => {
 			let key = e.key;
 			let keyCode = e.keyCode;
-			console.log(key, keyCode);
 		}
 	});
 

@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 
 	export let segment;
-	let onClick;
+	let scroller;
 
 	onMount(() => {
 		const body = document.body;
@@ -13,12 +13,13 @@
 		const regexp = /\/(?!\d)$/g;
 		let current_scroll = window.pageYOffset || document.documentElement.scrollTop;
 		let isMoving = false;
+		let isDebouncing = false;
 
-		window.addEventListener('scroll', () => { // debounce needs to be applied
+		window.addEventListener('scroll', () => {
+			if(isDebouncing) return;
 			let isMain = window.location.href.match(regexp);
 			if(!isMain) return;
 			let scrollY = window.pageYOffset || document.documentElement.scrollTop;
-			console.log("scrolled", scrollY);
 			const header = document.querySelector("header");
 			const main_background_image_height = document.querySelector("#main_background_image").height;
 			const back_to_top_btn = document.querySelector("#top-btn");
@@ -26,27 +27,30 @@
 			if(scrollY !== 0) back_to_top_btn.style = "display: flex;";
 			else back_to_top_btn.style = "display: none;";
 
-			onClick = () => {
+			scroller = isDown => {
+				isDebouncing = true;
+				setTimeout(() => {			// debouncing
+					isDebouncing = false;
+				}, 300)
 				isMoving = true;
-				header.classList.add("show_header");			// 27 line ~ 47 line, needs optimization. DRY
-				window.scrollTo({
-					top: 0,
-					behavior: 'smooth'
-				});
-			};
+				if(isDown === true) {
+					header.classList.remove("show_header");
+					window.scrollTo({
+						top: main_background_image_height,
+						behavior: 'smooth'
+					});
+				}
+				else {
+					header.classList.add("show_header");
+					window.scrollTo({
+						top: 0,
+						behavior: 'smooth'
+					});
+				}
+			}
 
-			if(scrollY > current_scroll && !isMoving) {
-				isMoving = true;
-				header.classList.remove("show_header");
-				window.scrollTo({
-					top: main_background_image_height,
-					behavior: 'smooth'
-				});
-			}
-				
-			else if(scrollY < current_scroll && !isMoving) {
-				onClick();
-			}
+			if(scrollY > current_scroll && !isMoving) scroller(true);		// true = scroll is going down
+			else if(scrollY < current_scroll && !isMoving) scroller(false);	// false = scroll is going up
 
 			if(scrollY === 0 || scrollY === main_background_image_height || scrollY === browser_height) isMoving = false;
 			current_scroll = scrollY;
@@ -174,6 +178,6 @@
 </header>
 
 <main>
-	<button title="back to top" id="top-btn" class="hide_top-btn" style="display: none;" on:click="{onClick}"></button>
+	<button title="back to top" id="top-btn" class="hide_top-btn" style="display: none;" on:click="{scroller}"></button>
 	<slot></slot>
 </main>	
