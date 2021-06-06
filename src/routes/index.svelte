@@ -170,7 +170,7 @@
 
 <div class="wrapper">
 	<div id="dashboard"> <!-- Try SVG Styling -->
-		<img id="main_background_image" class="img_appear" src={background_image} alt="main background of Lee's blog"/>
+		<img id="main_background_image" class="img_appear" src={background_image} alt="main background of Lee's blog"/> <!-- Try display: list-item to show a series of image -->
 		<h1>Welcome to my blog.</h1>
 		<h4>Frontend Developer</h4>
 		<h3>Leejong Shin</h3>
