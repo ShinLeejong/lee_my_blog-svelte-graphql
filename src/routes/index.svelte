@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import successkid from 'images/successkid.jpg';
-	import background_image from './dashboard/images/dreamstime_xxl_123015144.jpg';
+	import background_image from '../images/dreamstime_xxl_123015144.jpg';
 
 	let onKeyDown;
 
@@ -30,39 +30,46 @@
 
 <style>
 
-	h1, h2, h3, h4, figure, p {
+	h1, h3, h4 {
     	transition: color 0.5s;
-		text-align: center;
 		margin: 0 auto;
 	}
 
-	h1, h2, h3, h4 {
+	h1, h3, h4 {
 		font-size: 1rem;
 		text-transform: uppercase;
 		font-weight: 700;
 		margin: 0 0 0.5em 0;
 	}
 
-	figure {
-		margin: 0 0 1em 0;
-	}
-
-	p {
-		margin: 1rem auto;
-	}
-
-	@media (min-width: 480px) {
+	@media (min-width: 880px) {
 		h1 {
 			font-size: 4rem;
+		}
+
+		h3, h4 {
+			font-size: 1.5rem;
+		}
+	}
+
+	@media (max-width: 880px) {
+		h1 {
+			font-size: 1.5rem;
+		}
+
+		h3, h4 {
+			font-size: 1rem;
 		}
 	}
 
 	.wrapper {
 		width: 100%;
 		height: 200vh;
+		
 	}
 
 	.wrapper > #dashboard {
+		display: block;
 		overflow: hidden;
 		top: 0;
 		left: 0;
@@ -71,51 +78,39 @@
 	}
 
 	.wrapper > #dashboard img {
+		position: absolute;
 		object-fit: cover;
-		width: 100%;
-		height: 100%; /* The height of dashboard is 100vh */
+		width: 100vw;
+		height: 100vh; /* The height of dashboard is 100vh */
 		opacity: 1;
 	}
 
-	.wrapper > .contents {
-		width: 100%;
-		height: 100vh;
+	.dashboard-h_container {
+		position: relative;
+		top: 12vh;
+		height: 88%;
+		padding: 4vh 8vw;
 	}
 
-	.wrapper > .contents img {
-		max-width: 20rem;
-	}
-
-	.wrapper > #dashboard > h1 {
+	.dashboard-h_container > h1, h3, h4 {
 		text-transform: uppercase;
-		position: absolute;
-		top: 20vh;
-		left: 10vw;
+		position: relative;
+		line-height: 1rem;
+		animation: slideIn 2s, fadeIn 2s;
+		-moz-animation: slideIn 2s, fadeIn 2s; /* Firefox */
+		-webkit-animation: slideIn 2s, fadeIn 2s; /* Safari and Chrome */
+		-o-animation: slideIn 2s, fadeIn 2s; /* Opera */
+		animation-fill-mode: forwards;
+	}
+
+	.dashboard-h_container > h1 {
+		padding: 2vh 0;
 		color: white;
-		display: inline-block;
-		animation: fadeIn 2s;
-		-moz-animation: fadeIn 2s; /* Firefox */
-		-webkit-animation: fadeIn 2s; /* Safari and Chrome */
-		-o-animation: fadeIn 2s; /* Opera */
-		animation-fill-mode: forwards;
 	}
 
-	.wrapper > #dashboard > h3, h4 {
-		text-transform: uppercase;
-		position: absolute;
+	.dashboard-h_container > h3, h4 {
+		padding: 0 2vw;
 		color: rgb(250, 124, 145);
-		display: inline-block;
-		animation: slideIn 2s;
-		animation-fill-mode: forwards;
-	}
-
-	.wrapper > #dashboard > h3 {
-		top: 30vh;
-	}
-
-	.wrapper > #dashboard > h4 {
-		top: 32vh;
-		animation-delay: 1s;
 	}
 
 	@keyframes slideIn {
@@ -123,7 +118,7 @@
 			left: -40vw;
 		}
 		to {
-			left: 12vw;
+			left: 0;
 		}
 	}
 
@@ -171,19 +166,11 @@
 <div class="wrapper">
 	<div id="dashboard"> <!-- Try SVG Styling -->
 		<img id="main_background_image" class="img_appear" src={background_image} alt="main background of Lee's blog"/> <!-- Try display: list-item to show a series of image -->
-		<h1>Welcome to my blog.</h1>
-		<h4>Frontend Developer</h4>
-		<h3>Leejong Shin</h3>
-	</div>
-	<div class="contents" name="contents">
-		<h2>Great success!</h2>
-
-		<figure>
-			<img alt="Success Kid" src="{successkid}">
-			<figcaption>Have fun with Sapper!</figcaption>
-		</figure>
-
-		<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>		
+		<div class="dashboard-h_container">
+			<h1>Welcome to my blog.</h1>
+			<h4>Frontend Developer</h4>
+			<h3>Leejong Shin</h3>
+		</div>
 	</div>
 </div>
 

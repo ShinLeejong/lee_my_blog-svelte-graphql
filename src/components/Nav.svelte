@@ -12,7 +12,7 @@
 
 		// Detect whether the browser is from desktop, and if it is, fill in the nav_p_tag
 		if(isDesktop) {
-			const nav_p_tag = document.querySelector("#nav_p");
+			const nav_p_tag = document.querySelector(".nav_p");
 			const currentUser = user || "Guest";
 			nav_p_tag.innerHTML = "Welcome, " + currentUser + "!";
 		}
@@ -44,14 +44,36 @@
 		padding: 0 1em;
 	}
 
-	ul {
+	.header_nav_ul {
+		display: flex;
 		position: relative;
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
 
-	ul > li {
+	@media (max-width: 570px) {
+		.header_nav_ul {
+			width: 100vw;
+			max-height: calc(193px / 4);
+			flex-direction: column;
+			align-items: center;
+			opacity: 0.3;
+    		transition: max-height .8s, opacity .8s ease-out;
+		}
+
+		.header_nav_ul:hover {
+			max-height: 193px;
+			opacity: 1;
+    		transition: max-height .5s, opacity .5s ease-in;
+		}
+
+		.nav_p {
+			display: none;
+		}
+	}
+
+	.header_nav_ul > li {
 		padding: 0 0.5rem;
 	}
 
@@ -60,7 +82,7 @@
 	}
 
 	/* clearfix */
-	ul::after {
+	.header_nav_ul::after {
 		content: '';
 		display: block;
 		clear: both;
@@ -130,16 +152,16 @@
 
 <nav>
 	<span>
-		<p id="nav_p"></p>
+		<p class="nav_p"></p>
 		<button on:click={onDarkmodeClick}>Dark Mode</button>
-		<ul>
-			<li><a aria-current="{segment === undefined ? 'page' : undefined}" href="." on:click="{onNavClick}">home</a></li>
-			<li><a aria-current="{segment === 'about' ? 'page' : undefined}" href="about" on:click="{onNavClick}">about</a></li>
+		<ul class="header_nav_ul">
+			<li class="header_nav_ul_li_home"><a aria-current="{segment === undefined ? 'page' : undefined}" href="." on:click="{onNavClick}">home</a></li>
+			<li class="header_nav_ul_li_about"><a aria-current="{segment === 'about' ? 'page' : undefined}" href="about" on:click="{onNavClick}">about</a></li>
 
 			<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
 				the blog data when we hover over the link or tap it on a touchscreen -->
-			<li><a rel=prefetch aria-current="{segment === 'blog' ? 'page' : undefined}" href="blog" on:click="{onNavClick}">blog</a></li>
-			<li><a rel=prefetch aria-current="{segment === 'diary' ? 'page' : undefined}" href="diary" on:click="{onNavClick}">diary</a></li>
+			<li class="header_nav_ul_li_blog"><a rel=prefetch aria-current="{segment === 'blog' ? 'page' : undefined}" href="blog" on:click="{onNavClick}">blog</a></li>
+			<li class="header_nav_ul_li_diary"><a rel=prefetch aria-current="{segment === 'diary' ? 'page' : undefined}" href="diary" on:click="{onNavClick}">diary</a></li>
 		</ul>
 	</span>
 </nav>

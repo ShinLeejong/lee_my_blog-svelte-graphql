@@ -80,6 +80,7 @@
 		margin: 0;
 		box-sizing: border-box;
 		transition: background-color 1s ease-in-out;
+		overflow-x: hidden;
 	}
 
 	button {

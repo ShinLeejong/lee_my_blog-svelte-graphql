@@ -12,6 +12,7 @@
 		display: grid;
 		grid-template-columns: 50% 50%;
 		padding: .5rem 1rem;
+		overflow: hidden;
 	}
 
 	main .left {
@@ -22,7 +23,22 @@
 	}
 
 	main > .left img {
-		max-width: 45%;
+		width: 280px;
+		height: 280px;
+	}
+
+	@media (min-width: 1560px) {
+		main > .left img {
+			width: 326px;
+			height: 326px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		main > .left img {
+			width: 180px;
+			height: 180px;
+		}
 	}
 
 	main > .right {
@@ -30,18 +46,8 @@
 		justify-content: flex-start;
 		align-items: center;
 		padding: 0 6rem;
-		width: 20vw;
+		width: 65%;
 	}
-
-	main > .right > table {
-		margin: 1rem;
-		padding: 2rem;
-	}
-
-	/* main > .right img{
-		width: 100%;
-		max-width: 100px;
-	} */
 
 	main > .right > table > thead::after, tbody::after {
 		position: relative;
@@ -85,6 +91,31 @@
 
 	:global(body.dark-mode) .line {
 		background-color: bisque;
+	}
+
+	@media (max-width: 880px) {
+		main {
+			grid-template-columns: unset;
+			grid-template-rows: 50% 50%;
+		}
+
+		.line {
+			width: 70%;
+			height: 1px;
+		}
+
+		main > .right {
+			display: flex;
+			width: 100%;
+			height: 100%;
+			justify-content: center;
+			align-items: flex-start;
+			padding: .5rem 0;
+		}
+
+		main > .right > table {
+			width: 80%;
+		}
 	}
 
 </style>
