@@ -1,11 +1,53 @@
 <script>
-	import myface from '../images/my_face.jpg';
-	import KNUT_logo from '../images/KNUT_logo.jpg';
+	import { onMount } from 'svelte';
+	import pic_1 from '../images/my_face_1.jpg';
+	import pic_2 from '../images/my_face_2.jpg';
+	import pic_3 from '../images/my_face_3.jpg';
+	import pic_4 from '../images/my_face_4.jpg';
+
+	onMount(() => {
+		const li_1 = document.querySelector(".main-about-left-picture-1"),
+			li_2 = document.querySelector(".main-about-left-picture-2"),
+			li_3 = document.querySelector(".main-about-left-picture-3"),
+			li_4 = document.querySelector(".main-about-left-picture-4");
+
+		let now = 1;
+
+		const changePic = () => { // opacity 작업을 통해 animation 구현하자
+			switch(now) {
+				case 4:
+					li_3.style.cssText = "z-index: 9; display: none;";
+					li_4.style.cssText = "z-index: 99; display: list-item;";
+					now = 1;
+					break;
+				case 3:
+					li_2.style.cssText = "z-index: 9; display: none;";
+					li_3.style.cssText = "z-index: 99; display: list-item;";
+					now++;
+					break;
+				case 2:
+					li_1.style.cssText = "z-index: 9; display: none;";
+					li_2.style.cssText = "z-index: 99; display: list-item;";
+					now++;
+					break;
+				case 1:
+					li_4.style.cssText = "z-index: 9; display: none;";
+					li_1.style.cssText = "z-index: 99; display: list-item;";
+					now++;
+					break;
+				default:
+					break;
+			}
+		};
+
+		setInterval(changePic, 3000);
+	});
+
 </script>
 
 <style>
 
-	main {
+	.main-about-wrapper {
 		top: 3rem;
 		width: 100vw;
 		height: 100vh;
@@ -15,16 +57,20 @@
 		overflow: hidden;
 	}
 
-	main .left {
+	.main-about-left {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		padding: 0 6rem;
 	}
 
-	main > .left img {
+	.main-about-left img {
 		width: 280px;
 		height: 280px;
+	}
+
+	.main-about-left-picture-ul {
+		list-style: none;
 	}
 
 	@media (min-width: 1560px) {
@@ -41,7 +87,7 @@
 		}
 	}
 
-	main > .right {
+	.main-about-right {
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
@@ -49,7 +95,7 @@
 		width: 65%;
 	}
 
-	main > .right > table > thead::after, tbody::after {
+	.main-about-right > table > thead::after, tbody::after {
 		position: relative;
 		display: block;
 		content: "";
@@ -58,11 +104,11 @@
 		height: 1px;
 	}
 
-	main > .right > table > thead::after {
+	.main-about-right > table > thead::after {
 		background-color: pink;
 	}
 
-	main > .right > table > tbody::after {
+	.main-about-right > table > tbody::after {
 		background-color: blueviolet;
 	}
 
@@ -104,7 +150,7 @@
 			height: 1px;
 		}
 
-		main > .right {
+		.main-about-right {
 			display: flex;
 			width: 100%;
 			height: 100%;
@@ -113,7 +159,7 @@
 			padding: .5rem 0;
 		}
 
-		main > .right > table {
+		.main-about-right > table {
 			width: 80%;
 		}
 	}
@@ -124,11 +170,24 @@
 	<title>About</title>
 </svelte:head>
 
-<main class="about_wrapper">
-	<div class="left">
-		<img src="{myface}" alt="Lee's Handsome Face. He was young. He was...">
+<main class="main-about-wrapper">
+	<div class="main-about-left">
+		<ul class="main-about-left-picture-ul">
+			<li class="main-about-left-picture-1" style="z-index: 99; display: list-item;">
+				<img src={pic_1} id="pic_1" alt="first pic, Lee's face. regularly changing per 3 seconds">
+			</li>
+			<li class="main-about-left-picture-2" style="z-index: 9; display: none;">
+				<img src={pic_2} id="pic_2" alt="second pic, Lee's face. regularly changing per 3 seconds">
+			</li>
+			<li class="main-about-left-picture-3" style="z-index: 9; display: none;">
+				<img src={pic_3} id="pic_3" alt="third pic, Lee's face. regularly changing per 3 seconds">
+			</li>
+			<li class="main-about-left-picture-4" style="z-index: 9; display: none;">
+				<img src={pic_4} id="pic_4" alt="fourth pic, Lee's face. regularly changing per 3 seconds">
+			</li>
+		</ul>
 	</div>
-	<div class="right">
+	<div class="main-about-right">
 		<table border="0">
 			<thead>
 				<tr><td style="padding: 0 .5rem 0 .5rem">Name</td><td>신이종</td></tr>
