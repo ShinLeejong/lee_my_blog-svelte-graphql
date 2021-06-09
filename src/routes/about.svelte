@@ -158,7 +158,7 @@
 		}
 	}
 
-	@media (max-width: 370px) {
+	@media (max-width: 430px) {
 		.main-about-left-image_container {
 			width: 11rem;
 			height: 11rem;
