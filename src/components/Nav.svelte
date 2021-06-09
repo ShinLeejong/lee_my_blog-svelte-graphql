@@ -2,13 +2,20 @@
 	import { onMount } from 'svelte';
 	export let segment;
 
-	let onDarkmodeClick;
-	let onNavClick;
-	let isDarkMode;
-	let user;
+	let onDarkmodeClick,
+		onNavClick,
+		isDarkMode,
+	 	user,
+		unfold_and_fold_nav;
 
 	onMount(() => {
-		const isDesktop = navigator.userAgent.match(/[^(iPad)|(iPhone)|(iPod)|(android)|(webOS)]/i);
+		const isDesktop = navigator.userAgent.match(/[^(iPad)|(iPhone)|(iPod)|(android)|(webOS)]/i),
+			header_ul = document.querySelector(".header_nav_ul"),
+			header_about = document.querySelector(".header_nav_ul_li_about"),
+			header_blog = document.querySelector(".header_nav_ul_li_blog"),
+			header_diary = document.querySelector(".header_nav_ul_li_diary"),
+			unfoldBtn = document.querySelector("#unfoldBtn"),
+			foldBtn = document.querySelector("#foldBtn");
 
 		// Detect whether the browser is from desktop, and if it is, fill in the nav_p_tag
 		if(isDesktop) {
@@ -33,6 +40,16 @@
 			header.classList.add("show_header");
 			back_to_top_btn.style = "display: none;";	
 		}
+	
+		// unfoldBtn and foldBtn clicked
+		unfold_and_fold_nav = () => {
+			header_ul.classList.toggle("header_nav_unfolded");
+			header_about.classList.toggle("show");
+			header_blog.classList.toggle("show");
+			header_diary.classList.toggle("show");
+			unfoldBtn.classList.toggle("show");
+			foldBtn.classList.toggle("show");
+		}
 	});
 
 </script>
@@ -52,23 +69,35 @@
 		list-style: none;
 	}
 
+	#unfoldBtn {
+		z-index: 99;
+	}
+
 	@media (max-width: 570px) {
 		.header_nav_ul {
 			width: 100vw;
-			max-height: calc(193px / 4);
+			max-height: 3.5rem;
 			flex-direction: column;
 			align-items: center;
-			opacity: 0.3;
-    		transition: max-height .8s, opacity .8s ease-out;
+    		transition: max-height .8s ease-out;
 		}
 
-		.header_nav_ul:hover {
-			max-height: 193px;
-			opacity: 1;
-    		transition: max-height .5s, opacity .5s ease-in;
+		.header_nav_ul:hover,
+		.header_nav_unfolded {
+			max-height: 14rem;
 		}
 
 		.nav_p {
+			display: none;
+		}
+
+		#unfoldBtn {
+			display: block;
+		}
+
+		.header_nav_ul_li_about,
+		.header_nav_ul_li_blog,
+		.header_nav_ul_li_diary {
 			display: none;
 		}
 	}
@@ -111,7 +140,7 @@
 	}
 
 	button {
-		z-index: 800;
+		z-index: 9;
 		position: fixed;
 		right: 0;
 		display: flex;
@@ -124,6 +153,20 @@
 		padding: 0.5rem;
 		margin: 0.5rem;
 		transition: background-color 0.5s;
+	}
+
+	#unfoldBtn,
+	#foldBtn {
+		left: 0;
+		right: unset;
+	}
+
+	.show {
+		display: block;
+	}
+
+	.hidden {
+		display: none;
 	}
 
 	nav > span > p {
@@ -150,10 +193,13 @@
 
 </style>
 
+<form action="POST" style="display: none;" class="header_nav_unfolded"></form><!-- to ignore .header_nav_unfolded css selector from being purged by config. I'll make it optimized but this is for a temporary measure -->
 <nav>
 	<span>
 		<p class="nav_p"></p>
-		<button on:click={onDarkmodeClick}>Dark Mode</button>
+		<button id="darkModeBtn" class="show" on:click={onDarkmodeClick}>Dark Mode</button>
+		<button id="unfoldBtn" class="hidden" on:click={unfold_and_fold_nav}>▼</button>
+		<button id="foldBtn" class="hidden" on:click={unfold_and_fold_nav}>▲</button>
 		<ul class="header_nav_ul">
 			<li class="header_nav_ul_li_home"><a aria-current="{segment === undefined ? 'page' : undefined}" href="." on:click="{onNavClick}">home</a></li>
 			<li class="header_nav_ul_li_about"><a aria-current="{segment === 'about' ? 'page' : undefined}" href="about" on:click="{onNavClick}">about</a></li>
