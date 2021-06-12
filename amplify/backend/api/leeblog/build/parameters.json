@@ -1,0 +1,8 @@
+{
+    "CreateAPIKey": 1,
+    "AppSyncApiName": "leeblog",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "S3DeploymentBucket": "amplify-leeblog-dev-132000-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/52485d83669447be2b895c466f139a94965c2719"
+}

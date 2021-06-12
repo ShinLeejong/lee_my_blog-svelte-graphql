@@ -1,0 +1,64 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-leeblog-dev-132000-authRole",
+      "UnauthRoleArn": "arn:aws:iam::342389502386:role/amplify-leeblog-dev-132000-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::342389502386:role/amplify-leeblog-dev-132000-authRole",
+      "Region": "ap-northeast-2",
+      "DeploymentBucketName": "amplify-leeblog-dev-132000-deployment",
+      "UnauthRoleName": "amplify-leeblog-dev-132000-unauthRole",
+      "StackName": "amplify-leeblog-dev-132000",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:342389502386:stack/amplify-leeblog-dev-132000/d5970290-abc6-11eb-81fb-0aa73c97694a",
+      "AmplifyAppId": "d462cv55e6lt"
+    }
+  },
+  "auth": {
+    "leeblogffe69647": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-leeblog-dev-132000-deployment/amplify-cfn-templates/auth/leeblogffe69647-cloudformation-template.yml",
+        "logicalId": "authleeblogffe69647"
+      },
+      "lastPushTimeStamp": "2021-05-03T04:47:23.133Z",
+      "output": {
+        "UserPoolId": "ap-northeast-2_tbmqJuBik",
+        "AppClientIDWeb": "6p9pab1bhaq3ca8h0e9njovifc",
+        "AppClientID": "1ka256gijqod520epvm9ievoqu",
+        "IdentityPoolId": "ap-northeast-2:0bdcf6cb-7748-429c-9e79-e53626994b92",
+        "IdentityPoolName": "leeblogffe69647_identitypool_ffe69647__dev",
+        "UserPoolName": "leeblogffe69647_userpool_ffe69647"
+      },
+      "lastPushDirHash": "BgN9LV8bWKzt7R13TmiuWgxv+mo="
+    }
+  },
+  "api": {
+    "leeblog": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7,
+              "description": "demo"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "cmaws7sko5eztpf5tt6veufnsi",
+        "GraphQLAPIEndpointOutput": "https://3isekvgmmbcjfh55nctgm6xr6a.appsync-api.ap-northeast-2.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-4vlvcqef7javje4d4qkofa6exi"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-leeblog-dev-132000-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apileeblog"
+      },
+      "lastPushTimeStamp": "2021-05-03T04:47:24.745Z",
+      "lastPushDirHash": "eyDfhnHzUaoShqQ9kokFHFMebxE="
+    }
+  }
+}
