@@ -14,6 +14,7 @@
 			header_about = document.querySelector(".header_nav_ul_li_about"),
 			header_blog = document.querySelector(".header_nav_ul_li_blog"),
 			header_diary = document.querySelector(".header_nav_ul_li_diary"),
+			header_mail = document.querySelector(".header_nav_ul_li_mail"),
 			unfoldBtn = document.querySelector("#unfoldBtn"),
 			foldBtn = document.querySelector("#foldBtn");
 
@@ -47,6 +48,7 @@
 			header_about.classList.toggle("show");
 			header_blog.classList.toggle("show");
 			header_diary.classList.toggle("show");
+			header_mail.classList.toggle("show");
 			unfoldBtn.classList.toggle("show");
 			foldBtn.classList.toggle("show");
 		}
@@ -73,7 +75,12 @@
 		z-index: 99;
 	}
 
-	@media (max-width: 570px) {
+	@media (max-width: 680px) {
+
+		nav {
+			padding: unset;
+		}
+
 		.header_nav_ul {
 			width: 100vw;
 			max-height: 3.5rem;
@@ -84,7 +91,7 @@
 
 		.header_nav_ul:hover,
 		.header_nav_unfolded {
-			max-height: 14rem;
+			max-height: 16rem;
 		}
 
 		.nav_p {
@@ -97,7 +104,8 @@
 
 		.header_nav_ul_li_about,
 		.header_nav_ul_li_blog,
-		.header_nav_ul_li_diary {
+		.header_nav_ul_li_diary,
+		.header_nav_ul_li_mail {
 			display: none;
 		}
 	}
@@ -208,6 +216,7 @@
 				the blog data when we hover over the link or tap it on a touchscreen -->
 			<li class="header_nav_ul_li_blog"><a rel=prefetch aria-current="{segment === 'blog' ? 'page' : undefined}" href="blog" on:click="{onNavClick}">blog</a></li>
 			<li class="header_nav_ul_li_diary"><a rel=prefetch aria-current="{segment === 'diary' ? 'page' : undefined}" href="diary" on:click="{onNavClick}">diary</a></li>
+			<li class="header_nav_ul_li_mail"><a rel=prefetch aria-current="{segment === 'mail' ? 'page' : undefined}" href="mail" on:click="{onNavClick}">Mail to Lee</a></li>
 		</ul>
 	</span>
 </nav>

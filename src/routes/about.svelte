@@ -8,10 +8,14 @@
 
 <style>
 
+	td {
+		padding: 0 .5rem 0 .5rem;
+	}
+
 	.main-about-wrapper {
 		top: 3rem;
 		width: 100vw;
-		height: 100vh;
+		height: calc(100vh - 3rem);
 		display: grid;
 		grid-template-columns: 50% 50%;
 		padding: .5rem 1rem;
@@ -226,17 +230,18 @@
 	<div class="main-about-right">
 		<table border="0">
 			<thead>
-				<tr><td style="padding: 0 .5rem 0 .5rem">Name</td><td>신이종</td></tr>
-				<tr><td style="padding: 0 .5rem 0 .5rem">English name</td><td>Leejong Shin</td></tr>
-				<tr><td style="padding: 0 .5rem 0 .5rem">Kakaotalk ID</td><td>rker</td></tr>
-				<tr><td style="padding: 0 .5rem 0 .5rem">Birth</td><td>Oct 25, 1995<br />(27 years old in Korea)</td></tr>
+				<tr><td>Name</td><td>신이종</td></tr>
+				<tr><td>English name</td><td>Leejong Shin</td></tr>
+				<tr><td>Kakaotalk ID</td><td>rker</td></tr>
+				<tr><td>Email</td><td>spinburgjexer@gmail.com</td></tr>
+				<tr><td>Birth</td><td>Oct 25, 1995<br />(27 years old in Korea)</td></tr>
 			</thead>
 			<tbody>
-				<tr><td style="padding: 0 .5rem 0 .5rem">University</td><td>KNUT, Korea National University of Transportation</td><!--<td rowspan="3"><img src="{KNUT_logo}" alt="KNUT, Korea National University of Transportation" /></td>--></tr>
-				<tr><td style="padding: 0 .5rem 0 .5rem">Department</td><td>Software</td></tr>
+				<tr><td>University</td><td>KNUT, Korea National University of Transportation</td><!--<td rowspan="3"><img src="{KNUT_logo}" alt="KNUT, Korea National University of Transportation" /></td>--></tr>
+				<tr><td>Department</td><td>Software</td></tr>
 			</tbody>
 			<tfoot>
-				<td style="padding: 0 .5rem 0 .5rem">
+				<td>
 					Frontend Developer<br>
 					The President of Web Development Club - f(x)
 				</td>
