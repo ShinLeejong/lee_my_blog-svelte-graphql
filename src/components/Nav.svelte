@@ -179,7 +179,6 @@
 
 	.nav_p {
 		position: fixed;
-		top: 1rem;
 		right: 8rem;
 		display: flex;
 		justify-content: flex-end;

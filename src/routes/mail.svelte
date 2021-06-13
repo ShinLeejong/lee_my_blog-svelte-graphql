@@ -3,6 +3,8 @@
 
     $: value = '';
 
+    // Name, Email에 쓸 정규 표현식 만들자
+
     let email = '',
         name = '',
         content = '',
@@ -158,7 +160,7 @@
                     <tr>
                         <td>
                             <MaterialApp>
-                                <Button class="primary-color" disabled={!value || !content || error} on:click={onBtnClicked}>
+                                <Button class="primary-color" on:click={onBtnClicked}>
                                     Submit
                                 </Button>                                   
                             </MaterialApp>

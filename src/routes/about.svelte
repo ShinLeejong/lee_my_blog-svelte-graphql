@@ -9,7 +9,7 @@
 <style>
 
 	td {
-		padding: 0 .5rem 0 .5rem;
+		padding: .25rem 1.25rem;
 	}
 
 	.main-about-wrapper {
@@ -109,6 +109,14 @@
 		align-items: center;
 		padding: 0 6rem;
 		width: 65%;
+	}
+
+	.main-about-right-title {
+		font-size: .8rem;
+	}
+
+	.main-about-right-content {
+		font-size: .9rem;
 	}
 
 	.main-about-right > table > thead::after, tbody::after {
@@ -230,18 +238,18 @@
 	<div class="main-about-right">
 		<table border="0">
 			<thead>
-				<tr><td>Name</td><td>신이종</td></tr>
-				<tr><td>English name</td><td>Leejong Shin</td></tr>
-				<tr><td>Kakaotalk ID</td><td>rker</td></tr>
-				<tr><td>Email</td><td>spinburgjexer@gmail.com</td></tr>
-				<tr><td>Birth</td><td>Oct 25, 1995<br />(27 years old in Korea)</td></tr>
+				<tr><td class="main-about-right-title">Name</td><td class="main-about-right-content">신이종</td></tr>
+				<tr><td class="main-about-right-title">English name</td><td class="main-about-right-content">Leejong Shin</td></tr>
+				<tr><td class="main-about-right-title">Kakaotalk ID</td><td class="main-about-right-content">rker</td></tr>
+				<tr><td class="main-about-right-title">Email</td><td class="main-about-right-content">spinburgjexer@gmail.com</td></tr>
+				<tr><td class="main-about-right-title">Birth</td><td class="main-about-right-content">Oct 25, 1995<br />(27 years old in Korea)</td></tr>
 			</thead>
 			<tbody>
-				<tr><td>University</td><td>KNUT, Korea National University of Transportation</td><!--<td rowspan="3"><img src="{KNUT_logo}" alt="KNUT, Korea National University of Transportation" /></td>--></tr>
-				<tr><td>Department</td><td>Software</td></tr>
+				<tr><td class="main-about-right-title">University</td><td class="main-about-right-content">KNUT, Korea National University of Transportation</td><!--<td rowspan="3"><img src="{KNUT_logo}" alt="KNUT, Korea National University of Transportation" /></td>--></tr>
+				<tr><td class="main-about-right-title">Department</td><td class="main-about-right-content">Software</td></tr>
 			</tbody>
 			<tfoot>
-				<td>
+				<td class="main-about-right-content">
 					Frontend Developer<br>
 					The President of Web Development Club - f(x)
 				</td>
