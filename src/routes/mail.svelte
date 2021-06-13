@@ -1,18 +1,19 @@
 <script>
-    import {TextField, Button} from 'svelte-materialify';
+    import {TextField, Button, Textarea, MaterialApp} from 'svelte-materialify';
 
     $: value = '';
 
     let email = '',
         name = '',
+        content = '',
         error = null;
 
     const onSubmit = e => {
-
+        console.log("submitted. " + e);
     };
 
     const onBtnClicked = e => {
-
+        console.log("btn clicked. " + e);
     };
 
 </script>
@@ -27,8 +28,10 @@
     }
 
     .mail-content {
-        position: relative;
-        margin: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     .mail-form {
@@ -37,9 +40,43 @@
         margin: auto;
     }
 
-    .mail-input-small {
-        width: 64rem;
-        height: 1.5rem;
+    .mail-form > * {
+        max-width: 72rem;
+        max-height: 1.5rem;
+    }
+
+    #Lee_mail {
+        width: 100%;
+        text-align: center;
+        font-size: .9rem;
+    }
+
+    .mail-content-title {
+        padding: 1rem 0 .5rem .5rem;
+    }
+
+    #mail-name {
+        padding: 0 0 .5rem .5rem;
+    }
+
+    thead::after,
+    tbody::after {
+        content: '';
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 2px;
+        background-color: bisque;
+        margin: 2rem 0;
+    }
+
+    tbody::after {
+        background-color: cornflowerblue;
+    }
+
+    tfoot {
+        display: flex;
+        justify-content: center;
     }
 
 </style>
@@ -47,28 +84,88 @@
 <svelte:head>
 	<title>Mail</title>
 </svelte:head>
-
 <div class="mail-wrapper">
     <div class="mail-content">
         <form class="mail-form" on:submit|preventDefault={onSubmit}>
-            <p class="mail-to">To</p>
-            <input class="mail-input-small" value="spinburgjexer@gmail.com" disabled>
-            <p class="mail_name">Name</p>
-            <input class="mail-input-small" bind:value={name} placeholder="Name">
-            <p class="mail_email">Email</p>
-            <input class="mail-input-small" bind:value={email} placeholder="Email">
-            <p class="mail_content">Content</p>
-            <TextField
-                class="mail_textfield"
-                bind:value
-                bind:error
-                rules={[
-                    (v) => !!v || "required"
-                ]}
-                validateOnBlur />
-            <Button disabled={!value || error} on:click={onBtnClicked}>
-                Submit
-            </Button>
+            <table>
+                <thead>
+                    <tr><td id="mail-to" class="mail-content-title">To</td></tr>
+                    <tr><td><input id="Lee_mail" value="spinburgjexer@gmail.com" disabled></td></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="mail-name" class="mail-content-title">
+                            Name
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="mail-textfield">
+                            <MaterialApp>
+                                <TextField
+                                bind:value={name}
+                                bind:error
+                                outlined
+                                placeholder="Your Name"
+                                rules={[
+                                    (v) => !!v || "Name is required block"
+                                ]}
+                                validateOnBlur />                                
+                            </MaterialApp>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="mail-mail_addr" class="mail-content-title">
+                            Email
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="mail-textfield">
+                            <MaterialApp>
+                                <TextField
+                                bind:value={email}
+                                bind:error
+                                outlined
+                                placeholder="Your Content"
+                                rules={[
+                                    (v) => !!v || "Email Address is required block"
+                                ]}
+                                validateOnBlur />                                
+                            </MaterialApp>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="mail-mail_content" class="mail-content-title">
+                            Content
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="mail-textarea">
+                            <MaterialApp>
+                                <Textarea
+                                bind:value={content}
+                                bind:error
+                                solo
+                                placeholder="Content"
+                                rules={[
+                                    (v) => !!v || "Content is required block"
+                                ]}
+                                validateOnBlur />                                
+                            </MaterialApp>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <MaterialApp>
+                                <Button class="primary-color" disabled={!value || !content || error} on:click={onBtnClicked}>
+                                    Submit
+                                </Button>                                   
+                            </MaterialApp>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
         </form>        
     </div>
 </div>

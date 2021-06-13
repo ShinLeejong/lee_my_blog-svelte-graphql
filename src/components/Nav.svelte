@@ -134,8 +134,8 @@
 		position: absolute;
 		content: '';
 		width: calc(100% - 1em);
-		height: 2px;
-		background-color: rgb(248, 117, 73);
+		height: 3px;
+		background-color: blueviolet;
 		display: block;
 		bottom: -1px;
 	}
@@ -177,8 +177,9 @@
 		display: none;
 	}
 
-	nav > span > p {
+	.nav_p {
 		position: fixed;
+		top: 1rem;
 		right: 8rem;
 		display: flex;
 		justify-content: flex-end;
@@ -197,6 +198,10 @@
 	
 	:global(body.dark-mode) nav > span > ul > li {
 		color: white;
+	}
+
+	:global(body.dark-mode) [aria-current]::after {
+		background-color: red;
 	}
 
 </style>
