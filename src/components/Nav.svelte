@@ -180,7 +180,7 @@
 	.nav_p {
 		position: fixed;
 		right: 8rem;
-		display: flex;
+		display: none; /* 일시적으로 막았음 */
 		justify-content: flex-end;
 		align-items: center;
 	}
