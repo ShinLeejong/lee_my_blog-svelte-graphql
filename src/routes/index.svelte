@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import successkid from 'images/successkid.jpg';
+	import my_face_dashboard from '../images/my_face_dashboard.jpg';
 	import background_image from '../images/dreamstime_xxl_123015144.jpg';
 
 	let onKeyDown;
@@ -77,12 +77,17 @@
 		height: 100vh;
 	}
 
-	.wrapper > #dashboard img {
+	#main_background_image,
+	#home_bottom_image {
 		position: absolute;
 		object-fit: cover;
 		width: 100vw;
 		height: 100vh; /* The height of dashboard is 100vh */
-		opacity: 1;
+		animation: fadeIn 1s;
+	}
+
+	#home_bottom_image {
+		opacity: 0.8;
 	}
 
 	.dashboard-h_container {
@@ -103,7 +108,7 @@
 		animation-fill-mode: forwards;
 	}
 
-	.dashboard-h_container > h1 {
+	.dashboard-h_container > h1{
 		padding: 2vh 0;
 		color: white;
 	}
@@ -155,6 +160,34 @@
 		}
 	}
 
+	#home-bottom {
+		position: relative;
+		width: 100vw;
+		height: 100vh;
+		margin: unset;
+		background: linear-gradient(66deg, silver, black);
+	}
+
+	#home-bottom_p {
+		position: absolute;
+		top: 10%;
+		right: 10%;
+		margin: unset;
+		color: white;
+		font-size: 2rem;
+		font-style: italic;
+		transition: color .5s;
+	}
+
+	:global(body.dark-mode) #home-bottom {
+		background: linear-gradient(66deg, black, silver);
+	}
+
+	:global(body.dark-mode) #home-bottom_p {
+		color: black;
+	}
+
+
 </style>
 
 <svelte:window on:keydown={onKeyDown} />
@@ -165,12 +198,16 @@
 
 <div class="wrapper">
 	<div id="dashboard"> <!-- Try SVG Styling -->
-		<img id="main_background_image" class="img_appear" src={background_image} alt="main background of Lee's blog"/> <!-- Try display: list-item to show a series of image -->
+		<img id="main_background_image" src={background_image} alt="main background of Lee's blog"/> <!-- Try display: list-item to show a series of image -->
 		<div class="dashboard-h_container">
 			<h1>Welcome to my blog.</h1>
 			<h4>Frontend Developer</h4>
 			<h3>Leejong Shin</h3>
 		</div>
+	</div>
+	<div id="home-bottom">
+		<!-- <img id="home_bottom_image" src={my_face_dashboard} alt="my face on dashboard" /> -->
+		<p id="home-bottom_p">Developing more and more.</p>
 	</div>
 </div>
 
