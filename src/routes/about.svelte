@@ -241,6 +241,7 @@
 				<tr><td class="main-about-right-title">Name</td><td class="main-about-right-content">신이종</td></tr>
 				<tr><td class="main-about-right-title">English name</td><td class="main-about-right-content">Leejong Shin</td></tr>
 				<tr><td class="main-about-right-title">Kakaotalk ID</td><td class="main-about-right-content">rker</td></tr>
+				<tr><td class="main-about-right-title">Github</td><td class="main-about-right-content">iiy4383</td></tr>
 				<tr><td class="main-about-right-title">Email</td><td class="main-about-right-content">spinburgjexer@gmail.com</td></tr>
 				<tr><td class="main-about-right-title">Birth</td><td class="main-about-right-content">Oct 25, 1995<br />(27 years old in Korea)</td></tr>
 			</thead>

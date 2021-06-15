@@ -168,7 +168,23 @@
 		background: linear-gradient(66deg, silver, black);
 	}
 
-	#home-bottom_p {
+	#home-bottom-blinker {
+		position: absolute;
+		width: 100vw;
+		height: 100vh;
+		background-color: azure;
+		animation: blinking 3s infinite;
+	}
+
+	@keyframes blinking {
+		0% { opacity: 0; }
+
+		50% { opacity: 0.1; }
+
+		100% { opacity: 0; }
+	}
+
+	#home-bottom-p {
 		position: absolute;
 		top: 10%;
 		right: 10%;
@@ -177,14 +193,21 @@
 		font-size: 2rem;
 		font-style: italic;
 		transition: color .5s;
+		background: linear-gradient(to right, silver, #8ca6ce);
+		background-clip: text;	/* for compatibility */
+		-webkit-background-clip: text; /* cross browsing prob */
+		-webkit-text-fill-color: transparent; /* cross browsing prob */
 	}
 
 	:global(body.dark-mode) #home-bottom {
 		background: linear-gradient(66deg, black, silver);
 	}
 
-	:global(body.dark-mode) #home-bottom_p {
-		color: black;
+	:global(body.dark-mode) #home-bottom-p {
+		top: unset;
+		right: unset;
+		bottom: 10%;
+		left: 10%;
 	}
 
 
@@ -206,8 +229,13 @@
 		</div>
 	</div>
 	<div id="home-bottom">
+		<div id="home-bottom-blinker"></div>
 		<!-- <img id="home_bottom_image" src={my_face_dashboard} alt="my face on dashboard" /> -->
-		<p id="home-bottom_p">Developing more and more.</p>
+		<p id="home-bottom-p">
+			<span>
+				Developing more and more.
+			</span>
+		</p>
 	</div>
 </div>
 
