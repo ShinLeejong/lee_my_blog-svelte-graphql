@@ -251,8 +251,10 @@
 			</tbody>
 			<tfoot>
 				<td class="main-about-right-content">
-					Frontend Developer<br>
-					The President of Web Development Club - f(x)
+					<aside>
+						Frontend Developer<br>
+						The President of Web Development Club - f(x)						
+					</aside>
 				</td>
 			</tfoot>
 		</table>

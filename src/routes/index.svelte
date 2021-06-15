@@ -77,8 +77,7 @@
 		height: 100vh;
 	}
 
-	#main_background_image,
-	#home_bottom_image {
+	#main_background_image {
 		position: absolute;
 		object-fit: cover;
 		width: 100vw;
@@ -87,6 +86,8 @@
 	}
 
 	#home_bottom_image {
+		width: inherit;
+		height: inherit;
 		opacity: 0.8;
 	}
 
@@ -210,6 +211,91 @@
 		left: 10%;
 	}
 
+	#home-bottom-grid {
+		position: absolute;
+		display: grid;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 80vw;
+		height: 40vh;
+		grid-template-columns: 50% 50%;
+	}
+
+	#home-bottom-grid-contract,
+	#home-bottom-grid-pic {
+		padding: 2rem;
+		animation: slider_left 1s forwards;
+	}
+
+	#home-bottom-grid-contract {
+		display: grid;
+		grid-template-rows: repeat(3, 33%);
+	}
+
+	#home-bottom-grid-contract > div {
+		float: left;
+		padding: .5rem 0;
+		margin: auto 1rem;
+		line-height: 100%;
+	}
+
+	#home-bottom-grid-contract > div > img {
+		vertical-align: middle;
+		margin-right: 2rem;
+	}
+
+	#home-bottom-grid-contract > div > img {
+		width: 60px;
+		height: 60px;
+	}
+
+	#home-bottom-grid-pic {
+		object-fit: cover;
+		width: 17rem;
+		height: 17rem;
+		margin: auto 0;
+	}
+
+	@media (max-width: 550px) {
+		#home-bottom-grid-pic {
+			width: 14rem;
+			height: 14rem;
+		}
+	}
+
+	@media (max-width: 430px) {
+		#home-bottom-grid-pic {
+			width: 11rem;
+			height: 11rem;
+		}
+	}
+
+	:global(body.dark-mode) #home-bottom-grid-contract, #home-bottom-grid-pic {
+		animation: slider_right 1s forwards;
+	}
+
+	@keyframes slider_left {
+		from {
+			left: -60px;
+			opacity: 0.6;
+		}
+		to {
+			left: 0px;
+			opacity: 1;
+		}
+	}
+
+	@keyframes slider_right {
+		from {
+			left: 60px;
+			opacity: 0.6;
+		}
+		to {
+			left: 0;
+			opacity: 1;
+		}
+	}
 
 </style>
 
@@ -230,12 +316,27 @@
 	</div>
 	<div id="home-bottom">
 		<div id="home-bottom-blinker"></div>
-		<!-- <img id="home_bottom_image" src={my_face_dashboard} alt="my face on dashboard" /> -->
 		<p id="home-bottom-p">
 			<span>
 				Developing more and more.
 			</span>
 		</p>
+		<div id="home-bottom-grid">
+			<div id="home-bottom-grid-contract">
+				<div id="home-bottom-grid-contract-kakaotalk">
+					<img src="http://image.kmib.co.kr/online_image/2020/0101/611414110014085644_1.jpg" alt="kakaotalk icon"><span>rker</span>
+				</div>
+				<div id="home-bottom-grid-contract-naver">
+					<img src="http://wiki.hash.kr/images/2/22/%EB%84%A4%EC%9D%B4%EB%B2%84_%EB%A9%94%EC%9D%BC_%EB%A1%9C%EA%B3%A0.png" alt="naver mail logo" /><span>znlspf123@naver.com</span>
+				</div>
+				<div id="home-bottom-grid-contract-gmail">
+					<img src="https://i.pinimg.com/736x/ca/27/f6/ca27f615c790f1af43f2dd564599bf6a.jpg" alt="gmail logo" /><span>spinburgjexer@gmail.com</span>
+				</div>
+			</div>
+			<div id="home-bottom-grid-pic">
+				<img id="home_bottom_image" src={my_face_dashboard} alt="my face on dashboard" />
+			</div>
+		</div>
 	</div>
 </div>
 
