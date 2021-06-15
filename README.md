@@ -6,6 +6,14 @@ Svelte를 이용하여 제작하였으며,
 조금씩 살을 덧붙이는 중입니다.
 Responsive하게 만들고 있습니다.
 
+## 20210615
+Main-bottom 제작중
+
+![Screenshot_1](https://user-images.githubusercontent.com/56120315/121996096-ff08c580-cde2-11eb-8e69-95fc9d31d93a.png)
+
+![Screenshot_2](https://user-images.githubusercontent.com/56120315/121996101-0039f280-cde3-11eb-809f-3da1c10bce51.png)
+
+
 ## 20210613
 ### Main
 
