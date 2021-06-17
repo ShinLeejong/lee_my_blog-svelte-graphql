@@ -193,7 +193,6 @@
 		color: white;
 		font-size: 2rem;
 		font-style: italic;
-		transition: color .5s;
 		background: linear-gradient(to right, silver, #8ca6ce);
 		background-clip: text;	/* for compatibility */
 		-webkit-background-clip: text; /* cross browsing prob */

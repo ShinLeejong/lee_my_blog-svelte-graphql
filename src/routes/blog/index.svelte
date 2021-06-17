@@ -11,24 +11,52 @@
 </script>
 
 <style>
-	ul {
-		margin: 0 0 1em 0;
-		line-height: 1.5;
+	#blog-wrapper {
+		display: grid;
+		grid-template-columns: 20% 80%;
+		top: 3vh;
+		width: 100vw;
+		height: 97vh;
+		padding: 5rem 0;
 	}
+
+	#blog-left {
+		left: -20%;
+		width: 100%;
+		height: 100%;
+		padding: 0 1rem;
+	}
+
+	#blog-right {
+		width: 100%;
+		height: 100%;
+		padding: 0 1rem;
+	}
+
 </style>
 
 <svelte:head>
 	<title>Blog</title>
 </svelte:head>
 
-<h1>Recent posts</h1>
+<div id="blog-wrapper">
+	<div id="blog-left"></div>
+	<div id="blog-right">
+		{#each posts as post}
+			<!-- we're using the non-standard `rel=prefetch` attribute to
+					tell Sapper to load the data for the page as soon as
+					the user hovers over the link or taps it, instead of
+					waiting for the 'click' event -->
+			<li><a rel="prefetch" href="blog/{post.slug}">{post.title}</a></li>
+		{/each}		
+	</div>
+</div>
+<button id="blog-btn-create_post">
 
+</button>
+<button id="blog-btn-up"> <!-- DRY -->
+
+</button>
 <ul>
-	{#each posts as post}
-		<!-- we're using the non-standard `rel=prefetch` attribute to
-				tell Sapper to load the data for the page as soon as
-				the user hovers over the link or taps it, instead of
-				waiting for the 'click' event -->
-		<li><a rel="prefetch" href="blog/{post.slug}">{post.title}</a></li>
-	{/each}
+
 </ul>
