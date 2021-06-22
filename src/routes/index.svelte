@@ -305,7 +305,7 @@
 </svelte:head>
 
 <div class="wrapper">
-	<div id="dashboard"> <!-- Try SVG Styling -->
+	<div id="dashboard"> <!-- Try SVG Styling or anime.js -->
 		<img id="main_background_image" src={background_image} alt="main background of Lee's blog"/> <!-- Try display: list-item to show a series of image -->
 		<div class="dashboard-h_container">
 			<h1>Welcome to my blog.</h1>
